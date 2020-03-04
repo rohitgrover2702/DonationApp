@@ -1,0 +1,39 @@
+<div class="container login-page register-page">
+    <div class="row text-center">
+        <div class="col-sm-9 col-md-7 col-lg-7 mx-auto">
+            <img src="assets/images/tortoise.png" alt="logo" />
+            <h1 class="card-title text-center">Sign In</h1>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="clearfix"></div>
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <form class="form-signin" [formGroup]="rForm" (ngSubmit)="Login()" novalidate>
+                        <mat-form-field class="input-form">
+                            <input matInput type="text" maxlength="100" formControlName="email" id="inputEmail"
+                                class="input-full-width" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                 placeholder="Enter email" [errorStateMatcher]="matcher" required autofocus >                           
+                        </mat-form-field>
+                        <kobe-validation [control]="email" [RequiredMessage]="'Please enter email'"
+                        [PatternMessage]="'Please enter valid email'"></kobe-validation>                                                  
+                        <mat-form-field class="input-form">
+                            <input matInput type="password" maxlength="12" formControlName="password" id="inputPassword"
+                                class="input-full-width" placeholder="Password" [errorStateMatcher]="matcher" required>                            
+                        </mat-form-field>
+                        <kobe-validation [control]="password" [RequiredMessage]="'Please enter password'">
+                            </kobe-validation>
+                        <span class="forgot-txt"><a routerLink="/auth/forgot">Forgot it?</a></span>
+
+                        <kobe-button [label]="'Sign In'" [class]="'btn btn-lg btn-primary btn-block'" [type]="'submit'"
+                            [disableButton]="rForm.invalid">
+                        </kobe-button>
+                        <hr class="my-4">
+                        <p>Don't have a Kobe account yet? <a routerLink="/auth/register">Sign up now</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
